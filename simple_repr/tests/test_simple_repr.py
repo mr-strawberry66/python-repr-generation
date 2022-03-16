@@ -35,3 +35,15 @@ def test_make_repr():
     """Test the make_repr method of SimpleRepr."""
     test_object = TestNotInherited("a", 1)
     assert SimpleRepr.make_repr(test_object) == "TestNotInherited(arg_a='a', arg_b=1)"
+    assert SimpleRepr.make_repr(1) == "1"
+
+
+def test_make_repr_returns_str():
+    """Test that the make_repr method returns a string."""
+    test_object = TestNotInherited("a", 1)
+    assert isinstance(SimpleRepr.make_repr(test_object), str)
+    assert isinstance(SimpleRepr.make_repr("a"), str)
+    assert isinstance(SimpleRepr.make_repr(1), str)
+    assert isinstance(SimpleRepr.make_repr({"a": 1}), str)
+    assert isinstance(SimpleRepr.make_repr(["a", 1]), str)
+    assert isinstance(SimpleRepr.make_repr(("a", 1)), str)

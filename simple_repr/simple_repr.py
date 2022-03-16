@@ -50,7 +50,7 @@ class SimpleRepr:
 
         Excepts: AttributeError
             If the object provided is not a class
-            the object itself is returned.
+            the object is cast as str and returned.
         """
         try:
             attrs = obj.__dict__.items()
@@ -68,7 +68,7 @@ class SimpleRepr:
             return as_str
 
         except AttributeError:
-            return obj
+            return str(obj)
 
     @staticmethod
     def _check_type(value: any) -> any:
