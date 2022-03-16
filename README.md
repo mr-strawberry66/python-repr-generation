@@ -46,7 +46,7 @@ To create your environment, type `virtualenv venv --prompt "(your-env) "`. Once 
 
 ## Installation
 ### Using the library
-*   Install this library by running `pip install git+ssh://github.com/mr-strawberry66/python-repr-generation`.
+*   Install this library by running `pip install simple-repr`.
 *   Import the library by adding `from simple_repr import SimpleRepr` to your code.
 
 ### Developing for this library
