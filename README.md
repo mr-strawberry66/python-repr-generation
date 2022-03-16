@@ -1,7 +1,7 @@
 # Create string representations of classes
 [![Build Status](https://app.travis-ci.com/mr-strawberry66/python-repr-generation.svg?branch=master)](https://app.travis-ci.com/mr-strawberry66/python-repr-generation) 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-![License](https://img.shields.io/github/license/mr-strawberry66/python-repr-generation)]
+![License](https://img.shields.io/github/license/mr-strawberry66/python-repr-generation)
 [![Pypi Version](https://img.shields.io/pypi/v/simple-repr)](https://pypi.org/project/simple-repr/)
 [![Updates](https://pyup.io/repos/github/mr-strawberry66/python-repr-generation/shield.svg)](https://pyup.io/repos/github/mr-strawberry66/python-repr-generation/)
 

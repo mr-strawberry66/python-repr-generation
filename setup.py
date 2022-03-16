@@ -8,7 +8,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="simple_repr",
-    version="1.2.0",
+    version="1.2.1",
     description="SimpleRepr is a class for creating string representations of classes.",
     url="https://github.com/mr-strawberry66/python-repr-generation",
     author="Sam Kenney",
