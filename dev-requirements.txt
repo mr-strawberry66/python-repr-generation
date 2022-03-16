@@ -1,5 +1,6 @@
-flake8
 black
+flake8
+nox
 pylint
 pytest
-nox
+pytest-cov

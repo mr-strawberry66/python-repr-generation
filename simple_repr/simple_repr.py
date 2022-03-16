@@ -53,17 +53,17 @@ class SimpleRepr:
             the object itself is returned.
         """
         try:
-            as_str = ""
             attrs = obj.__dict__.items()
-            as_str += f"{str(obj.__class__.__qualname__)}("
+            as_str = f"{str(obj.__class__.__qualname__)}("
 
             for i, (key, value) in enumerate(attrs):
-                if i != len(attrs) - 1:
-                    as_str += f"{key}={SimpleRepr._check_type(value)}, "
-                else:
-                    as_str += f"{key}={SimpleRepr._check_type(value)}"
+                as_str += f"{key}={SimpleRepr._check_type(value)}"
 
-            as_str += ")"
+                if i != len(attrs) - 1:
+                    as_str += ", "
+
+                else:
+                    as_str += ")"
 
             return as_str
 
