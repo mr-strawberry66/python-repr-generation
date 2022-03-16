@@ -62,8 +62,7 @@ class SimpleRepr:
                 if i != len(attrs) - 1:
                     as_str += ", "
 
-                else:
-                    as_str += ")"
+            as_str += ")"
 
             return as_str
 
