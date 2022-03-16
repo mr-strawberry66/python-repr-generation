@@ -47,3 +47,5 @@ def test_make_repr_returns_str():
     assert isinstance(SimpleRepr.make_repr({"a": 1}), str)
     assert isinstance(SimpleRepr.make_repr(["a", 1]), str)
     assert isinstance(SimpleRepr.make_repr(("a", 1)), str)
+    assert isinstance(SimpleRepr.make_repr(any), str)
+    assert isinstance(SimpleRepr.make_repr(...), str)
