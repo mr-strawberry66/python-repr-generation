@@ -24,7 +24,7 @@ def test__check_type():
     """
     Test the _check_type method of SimpleRepr.
 
-    Note the use of disable=W0622 to silence pylint
+    Note the use of disable=W0212 to silence pylint
     complaining about testing a protected member.
     """
     assert SimpleRepr._check_type(1) == 1  # pylint: disable=W0212
