@@ -1,4 +1,12 @@
+clean-build-env:
+	$(shell [ -d simple_repr.egg-info ] && rm -r simple_repr.egg-info/)
+	$(shell [ -d dist ] && rm -r dist/)
+	$(shell [ -d build ] && rm -r build/)
+
+	@echo "Cleaned up build environment."
+
 build-lib:
+	@echo "Building lib..."
 	python setup.py sdist bdist_wheel
 	twine check dist/*
 
