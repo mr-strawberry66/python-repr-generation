@@ -1,8 +1,8 @@
 # Create string representations of classes
 [![Build Status](https://app.travis-ci.com/mr-strawberry66/python-repr-generation.svg?branch=master)](https://app.travis-ci.com/mr-strawberry66/python-repr-generation) 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-![License](https://img.shields.io/github/license/mr-strawberry66/python-repr-generation)
-![Pypi Version](https://img.shields.io/pypi/v/simple-repr)
+![License](https://img.shields.io/github/license/mr-strawberry66/python-repr-generation)]
+[![Pypi Version](https://img.shields.io/pypi/v/simple-repr)](https://pypi.org/project/simple-repr/)
 [![Updates](https://pyup.io/repos/github/mr-strawberry66/python-repr-generation/shield.svg)](https://pyup.io/repos/github/mr-strawberry66/python-repr-generation/)
 
 This module contains a class used to generate `__repr__` methods for your classes. This can be done either by inheriting from the `SimpleRepr` class, or by creating a `__repr__` function, and returing `SimpleRepr.make_repr(self)`
