@@ -14,8 +14,9 @@ setup(
     author="Sam Kenney",
     author_email="sam.kenney@me.com",
     license="MIT",
+    long_description_content_type="text/markdown",
     long_description=long_description,
     platforms=[],
     packages=["simple_repr"]
-    + ["simple_repr." + pkg for pkg in find_packages("simple_repr")],
+    + ["simple_repr." + pkg for pkg in find_packages("simple_repr", exclude=["tests"])],
 )

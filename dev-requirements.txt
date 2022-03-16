@@ -4,3 +4,4 @@ nox
 pylint
 pytest
 pytest-cov
+twine
