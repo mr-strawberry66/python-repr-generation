@@ -1,5 +1,5 @@
 clean-build-env:
-	$(shell [ -d simple_repr.egg-info ] && rm -r simple_repr.egg-info/)
+	$(shell [ -d *.egg-info ] && rm -r simple_repr.egg-info/)
 	$(shell [ -d dist ] && rm -r dist/)
 	$(shell [ -d build ] && rm -r build/)
 
