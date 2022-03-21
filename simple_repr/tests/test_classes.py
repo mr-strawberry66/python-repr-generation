@@ -28,3 +28,17 @@ class TestNotInherited:  # pylint: disable=R0903
 
 
 TestNotInherited.__test__ = False
+
+
+class TestClassConstants(SimpleRepr):  # pylint: disable=R0903
+    """Class used to test SimpleRepr module."""
+
+    CONST_A = "Some Value"
+
+    def __init__(self, arg_a: str, arg_b: int):
+        """Initialise instance."""
+        self.arg_a = arg_a
+        self.arg_b = arg_b
+
+
+TestClassConstants.__test__ = False

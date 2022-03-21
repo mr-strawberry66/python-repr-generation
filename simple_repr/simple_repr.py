@@ -1,4 +1,5 @@
 """Module to create __repr__ method for classes."""
+from __future__ import annotations
 
 
 class SimpleRepr:
@@ -25,12 +26,30 @@ class SimpleRepr:
             ...     self.age = age
             ...
             ... def __repr__(self) -> str:
-            ...     return SimpleRepr.make_repr(self)
+            ...     return SimpleRepr().make_repr(self)
             ...
             >>> user = User('John', 25)
             >>> print(user)
             User(name='John', age=25)
     """
+
+    CONSTANTS = None
+
+    @classmethod
+    def __new__(cls, *args, **kwargs):
+        """Store class constants in SimpleRepr for later use."""
+        del args, kwargs
+
+        SimpleRepr.CONSTANTS = None
+
+        constants = {
+            key: value for key, value in cls.__dict__.items() if not key.startswith("_")
+        }
+
+        if constants:
+            SimpleRepr.CONSTANTS = constants
+
+        return super().__new__(cls)
 
     def __repr__(self) -> str:
         """Use when SimpleRepr is inherited from."""
@@ -53,21 +72,49 @@ class SimpleRepr:
             the object is cast as str and returned.
         """
         try:
-            attrs = obj.__dict__.items()
             as_str = f"{str(obj.__class__.__qualname__)}("
 
-            for i, (key, value) in enumerate(attrs):
-                as_str += f"{key}={SimpleRepr._check_type(value)}"
-
-                if i != len(attrs) - 1:
+            if getattr(SimpleRepr, "CONSTANTS", None):
+                if "CONSTANTS" not in SimpleRepr.CONSTANTS:  # pylint: disable=E1135
+                    consts = SimpleRepr.CONSTANTS.items()
+                    as_str += SimpleRepr._build_constants(consts)
                     as_str += ", "
 
-            as_str += ")"
+            attrs = obj.__dict__.items()
 
-            return as_str
+            if attrs:
+                as_str += SimpleRepr._build_attrs(attrs)
+
+            return as_str + ")"
 
         except AttributeError:
             return str(obj)
+
+    @staticmethod
+    def _build_attrs(attrs: dict.items) -> str:
+        """Build the repr string for the object's attributes."""
+        as_str = "args=["
+        for i, (key, value) in enumerate(attrs):
+            as_str += f"{key}={SimpleRepr._check_type(value)}"
+
+            if i != len(attrs) - 1:
+                as_str += ", "
+        as_str += "]"
+        return as_str
+
+    @staticmethod
+    def _build_constants(consts: dict.items) -> str:
+        """Build the repr string for the class constants."""
+        as_str = "consts=["
+
+        for i, (key, value) in enumerate(consts):
+            as_str += f"{key}={SimpleRepr._check_type(value)}"
+
+            if i != len(consts) - 1:
+                as_str += ", "
+
+        as_str += "]"
+        return as_str
 
     @staticmethod
     def _check_type(value: any) -> any:
