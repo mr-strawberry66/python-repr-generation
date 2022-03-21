@@ -19,10 +19,31 @@ class User(SimpleRepr):
         self.name = name
         self.age = age
 
+
 user = User('John', 25)
 print(user)
 
->>> User(name='John', age=25)
+>>> "User(args[name='John', age=25])"
+```
+Inheriting from `SimpleRepr` allows for the inclusion of `class` constants.
+
+```py
+from simple_repr import SimpleRepr
+
+
+class User(SimpleRepr):
+
+    COMPANY = "Some Company"
+
+    def __init__(self, name: str, age: int):
+        self.name = name
+        self.age = age
+
+
+user = User('John', 25)
+print(user)
+
+>>> "User(consts=[COMPANY='Some Company'], args[name='John', age=25])"
 ```
 
 ### Defining a function
@@ -37,12 +58,37 @@ class User:
         self.age = age
 
     def __repr__(self) -> str:
-        return SimpleRepr.make_repr(self)
-        
+        return SimpleRepr().make_repr(self)
+
+
 user = User('John', 25)
 print(user)
 
->>> User(name='John', age=25)
+>>> "User(args=[name='John', age=25])"
+```
+
+The downside to defining your own function is that `class` constants are no longer accessible, and therefore will not be included in the `repr`.
+
+```py
+from simple_repr import SimpleRepr
+
+
+class User:
+
+    COMPANY = "Some Company"
+
+    def __init__(self, name: str, age: int):
+        self.name = name
+        self.age = age
+
+    def __repr__(self) -> str:
+        return SimpleRepr().make_repr(self)
+
+
+user = User('John', 25)
+print(user)
+
+>>> "User(args[name='John', age=25])"
 ```
 
 ## Creating an environment
